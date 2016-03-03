@@ -1,4 +1,4 @@
-package cn.sdu.wiki.HibernateToolUtil;
+package cn.sdu.wiki.HibernateFactory;
 
 
 import org.apache.log4j.Logger;  

@@ -5,7 +5,8 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import cn.sdu.wiki.HibernateToolUtil.HibernateUtil;
+
+import cn.sdu.wiki.HibernateFactory.HibernateUtil;
 import cn.sdu.wiki.dao.BaseDao;
 
 public class BaseDaoImpl implements BaseDao {
@@ -61,7 +62,7 @@ public class BaseDaoImpl implements BaseDao {
 		}
 	}
 
-	public Object get(Class cls,Integer id) {
+	public Object get(Class<Object> cls,Integer id) {
 		try {
 			return session.get(cls, id);
 		} catch (Exception e) {
@@ -73,11 +74,12 @@ public class BaseDaoImpl implements BaseDao {
 		return null;
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<Object> list(String hql) {
 		// TODO Auto-generated method stub
 		try {
 			Query q = session.createQuery(hql);
-			List list = q.list();
+			List<Object> list = q.list();
 			return list;
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -89,11 +91,12 @@ public class BaseDaoImpl implements BaseDao {
 		return null;
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<Object> downlist(String hql) {
 		// TODO Auto-generated method stub
 		try {
 			Query q = session.createQuery(hql+" desc");
-			List list = q.list();
+			List<Object> list = q.list();
 			return list;
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -105,11 +108,12 @@ public class BaseDaoImpl implements BaseDao {
 		return null;
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<Object> uplist(String hql) {
 		// TODO Auto-generated method stub
 		try {
 			Query q = session.createQuery(hql);
-			List list = q.list();
+			List<Object> list = q.list();
 			return list;
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
