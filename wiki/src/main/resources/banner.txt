@@ -1,0 +1,3 @@
+spring boot start run
+${application.formatted-version}
+${spring-boot.formatted-version}
