@@ -1,17 +1,17 @@
 package cn.sdu.wiki;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-@Configuration //配置控制
-@EnableAutoConfiguration //启动自动配置
-@ComponentScan //组件扫描
+@SpringBootApplication //same as @Configeration,@CompenentScan,@EnableAutoConfiguration
 public class MainController {
 
     public static void main(String[] args) throws Exception {
-    	SpringApplication.run(MainController.class,args);
+    	SpringApplication.run(MainController.class, args);
     }
     
 }
