@@ -11,21 +11,10 @@
   
   <body>
    	<h1>欢迎登陆</h1>
-   	<table>
-   	<form th:action="@{/mylogin}" th:object="${user}" method="post">
-   		<tr>
-   			<td><label for="username">username:</label></td>
-   			<td><input type="text" name="username" id="username" /></td>
-   		</tr>
-   		<tr>
-   			<td><label for="password">password:</label></td>
-   			<td><input type="password" name="password" id="password" /></td>
-   		</tr>
-   		<tr>
-   			<td></td>
-   			<td align="right"><input type="submit" value="submit" /></td>
-   		</tr>
-   	</form>
-   	</table>
+   	   <h1> <span th:text="${result}"></span></h1>
+    <h1>欢迎 ： <span  th:text="${session.user}?${session.user.getUsername()}:'（您未登录）'" ></span> </h1>
+    <a th:href="@{/register}">点击注册</a>
+    <a th:href="@{/index}" th:if="${session.user==null}">点击登录</a>
+    <a th:href="@{/loginOut}" th:unless="${session.user==null}">退出登陆</a>
   </body>
 </html>

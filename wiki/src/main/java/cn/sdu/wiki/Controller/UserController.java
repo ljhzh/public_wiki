@@ -23,7 +23,7 @@ public class UserController {
 	private UserService userservice;
 	
 	//跳转链接，跳转到主页
-	@RequestMapping("")
+	@RequestMapping("/")
 	public String index(HttpServletResponse response) {
 		//重定向到/index
 		return response.encodeRedirectURL("/index");
@@ -53,7 +53,7 @@ public class UserController {
         String result = userservice.register(user);
         //将结果放入model中，在模板中可以取到model中的值
         model.addAttribute("result", result);
-        return response.encodeRedirectURL("/index");
+        return response.encodeRedirectURL("/mylogin");
     }
 	
 	@RequestMapping(value = "/mylogin", method = RequestMethod.GET)
@@ -75,13 +75,13 @@ public class UserController {
             session.setAttribute("user",user);
         }
         model.addAttribute("result", result);
-        return response.encodeRedirectURL("/index");
+        return response.encodeRedirectURL("/mylogin");
     }
 
     @RequestMapping(value = "/loginOut", method = RequestMethod.GET)
     public String loginOut(HttpSession session) {
         //从session中删除user属性，用户退出登录
         session.removeAttribute("user");
-        return "index";
+        return "mylogin";
     }
 }

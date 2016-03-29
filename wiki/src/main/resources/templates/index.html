@@ -1,15 +1,70 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8"/>
-    <title>Index</title>
+<head th:fragment="header">
+	<title>
+		wiki项目--属于我们自己的wiki系统
+	</title>
+	<meta charset="utf-8"/>
+	<link rel="stylesheet" type="text/css" href="css/OutLook.css" th:href="@{/css/OutLook.css}"/>
+	<link rel="stylesheet" type="text/css" href="css/details.css" th:href="@{/css/details.css}"/>
+	
 </head>
 <body>
-    <!--这里报错是因为idea的bug，官方说会在以后修复，不知道啥时候呢。-->
-    <h1> <span th:text="${result}"></span></h1>
-    <h1>欢迎 ： <span  th:text="${session.user}?${session.user.getUsername()}:'（您未登录）'" ></span> </h1>
-    <a th:href="@{/register}">点击注册</a>
-    <a th:href="@{/mylogin}" th:if="${session.user==null}">点击登录</a>
-    <a th:href="@{/loginOut}" th:unless="${session.user==null}">退出登陆</a>
+	<div id="container">
+		<div id="head">
+			<ul>
+				<li><a href="">首页简章</a></li>
+				<li><a href="">用户注册</a></li>
+				<li><a href="">功能接口</a></li>
+				<li><a href="">团队注册</a></li>
+			</ul>
+		</div>
+		<div id="article" role="login">
+			<div class="logo"></div>
+			<div class="stage">欢迎使用wiki系统</div>
+			<div class="login-box">
+				<div class="login">
+					<div class="msgtag"><label>您现在所处在的位置是登录口</label></div>
+					<form th:action="@{/mylogin}" th:object="${user}" method="post">
+						<table>
+							<tr>
+								<td class="idlemsg">用户名:</td>
+								<td><input type="text" name="username" class="btn"/></td>
+								<td></td>
+							</tr>
+								<td class="idlemsg">密码:</td>
+								<td><input type="password" name="password" class="btn"/></td>
+								<td></td>
+							<tr>
+								<td class="idlemsg"></td>
+								<td><input type="submit" value="提交登录" class="btn-default"/>&nbsp;&nbsp;<input type="reset" value="重置输入" class="btn-default"/></td>
+								<td></td>
+							</tr>
+						</table>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div id="foot">
+			<div class="endlang">
+				<ul>
+					<li>Copyright © 2016 sduwh wiki</li>
+					<li>山东大学威海校区</li>
+					<li>&nbsp;</li>
+					<li>学校地址：山东省威海市环翠区文化西路180号山东大学(威海),有包裹想寄给开发成员也可以填这个地址哦</li>
+				</ul>
+				<ul>
+					<li><a href="">联系方式</a></li>
+					<li><a href="">职业机会</a></li>
+					<li><a href="">法律声明</a></li>
+				</ul>
+				<ul>
+					<li><a href="">wiki社区</a></li>
+					<li><a href="">关于wiki</a></li>
+					<li><a href="">开发小组</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
